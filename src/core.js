@@ -110,10 +110,11 @@ function deepEqual(firstObject, secondObject) {
         return true;
     }
     if (
-        firstObject === null ||
-        secondObject === null ||
-        typeof firstObject != 'object' ||
-        typeof secondObject != 'object'
+        (firstObject === null ||
+            secondObject === null ||
+            typeof firstObject != 'object' ||
+            typeof secondObject != 'object') &&
+        !Object.is(firstObject, secondObject)
     ) {
         return false;
     }
